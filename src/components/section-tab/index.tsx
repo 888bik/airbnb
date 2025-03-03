@@ -1,4 +1,4 @@
-import React, { memo, useState } from "react";
+import { memo, useState } from "react";
 import { SectionTabWrapper } from "./style";
 import ScrollView from "@/base-ui/scroll-view";
 import classNames from "classnames";

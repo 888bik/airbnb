@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import { memo } from "react";
 import { FooterWrapper } from "./style.js";
 import footerData from "@/assets/data/footer.json";
 

@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import { memo } from "react";
 import { HomeSectionV3Wrapper } from "./style";
 import SectionHeader from "@/components/section-header";
 import SectionFooter from "@/components/section-footer";

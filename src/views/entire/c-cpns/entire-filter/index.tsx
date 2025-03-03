@@ -1,4 +1,4 @@
-import React, { memo, useState } from "react";
+import { memo, useState } from "react";
 import { EntireFilterWrapper } from "./style";
 import filterData from "@/assets/data/filter_data.json";
 import classNames from "classnames";

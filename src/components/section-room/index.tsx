@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import { memo } from "react";
 import { SectionRoomWrapper } from "./style";
 import RoomItem from "../room-item";
 import { IRoomInfo } from "@/types/home";

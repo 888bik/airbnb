@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useState } from "react";
+import { memo, useCallback, useState } from "react";
 import { HomeSectionV2Wrapper } from "./style";
 import SectionHeader from "@/components/section-header";
 import SectionTab from "@/components/section-tab";

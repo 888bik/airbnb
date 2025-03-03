@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import { memo } from "react";
 import { HomeLongForWrapper } from "./style";
 import ScrollView from "@/base-ui/scroll-view";
 import { IBaseSectionInfoV1 } from "@/types/home";

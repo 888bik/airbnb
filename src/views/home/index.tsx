@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from "react";
+import { memo, useEffect } from "react";
 import HomeBanner from "./c-cpns/home-banner";
 import { HomeWrapper } from "./style";
 import { useAppDispatch, RootState } from "@/store";

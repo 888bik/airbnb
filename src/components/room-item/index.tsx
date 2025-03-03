@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import { memo } from "react";
 import { ItemRoomWrapper } from "./style";
 import { IRoomInfo } from "@/types/home";
 import Rating from "@mui/material/Rating";

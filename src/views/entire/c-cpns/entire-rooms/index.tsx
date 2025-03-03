@@ -1,9 +1,9 @@
-import React, { memo } from "react";
+import { memo } from "react";
 import { EntireRoomsWrapper } from "./style";
 import { shallowEqual, useSelector } from "react-redux";
 import { RootState } from "@/store/index";
 import RoomItem from "@/components/room-item";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 const EntireRooms = memo(() => {
   const { roomListData, totalCount } = useSelector(

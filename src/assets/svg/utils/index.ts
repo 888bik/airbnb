@@ -2,7 +2,7 @@ export function styleStrToObject(styleStr: string): Record<string, string> {
   const obj: Record<string, string> = {};
   const s = styleStr
     .toLowerCase()
-    .replace(/-(.)/g, function (m, g) {
+    .replace(/-(.)/g, function (_, g) {
       return g.toUpperCase();
     })
     .replace(/;\s?$/g, "")
@@ -13,4 +13,3 @@ export function styleStrToObject(styleStr: string): Record<string, string> {
 
   return obj;
 }
-

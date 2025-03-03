@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from "react";
+import { memo, useEffect } from "react";
 import { EntireWrapper } from "./style";
 import EntireFilter from "./c-cpns/entire-filter";
 import EntireRooms from "./c-cpns/entire-rooms";

@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import { memo } from "react";
 import { LongForItemWrapper } from "./style";
 import { IRoomInfo } from "@/types/home";
 
