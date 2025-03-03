@@ -6,10 +6,11 @@ import RoomItem from "@/components/room-item";
 // import { useNavigate } from "react-router-dom";
 
 const EntireRooms = memo(() => {
-  const { roomListData, totalCount } = useSelector(
+  const { roomListData, totalCount, isLoading } = useSelector(
     (state: RootState) => ({
       roomListData: state.entire.RoomList,
       totalCount: state.entire.totalCount,
+      isLoading: state.entire.isLoading,
     }),
     shallowEqual
   );
@@ -26,12 +27,13 @@ const EntireRooms = memo(() => {
             <RoomItem
               itemData={item}
               itemWidth="20%"
-              key={item.id}
+              key={item._id}
               // itemClick={itemClickHandle}
             />
           );
         })}
       </div>
+      {isLoading && <div className="cover"></div>}
     </EntireRoomsWrapper>
   );
 });

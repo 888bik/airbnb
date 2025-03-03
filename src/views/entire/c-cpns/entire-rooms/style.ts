@@ -22,6 +22,6 @@ export const EntireRoomsWrapper = styled.div`
     right: 0;
     top: 0;
     bottom: 0;
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.4);
   }
 `;

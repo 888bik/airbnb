@@ -2,5 +2,7 @@ import { IRoomInfo } from "./home";
 
 export interface IEntireState {
   RoomList: IRoomInfo[];
-  totalCount:number
+  totalCount: number;
+  currentPage: number;
+  isLoading: boolean;
 }
