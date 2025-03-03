@@ -34,7 +34,7 @@ const EntireRooms = memo(() => {
               itemData={item}
               itemWidth="20%"
               key={item._id}
-              handleItemClick={itemClick}
+              itemClick={itemClick}
             />
           );
         })}
