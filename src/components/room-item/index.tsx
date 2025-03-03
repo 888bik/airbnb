@@ -6,8 +6,15 @@ import Rating from "@mui/material/Rating";
 interface IProps {
   itemData: IRoomInfo;
   itemWidth?: string;
+  handleItemClick: (itemData) => void;
 }
 const RoomItem = memo((props: IProps) => {
+  const { handleItemClick } = props;
+  function itemClick(itemData) {
+    if (handleItemClick) {
+      handleItemClick(itemData);
+    }
+  }
   const { itemData, itemWidth = "25%" } = props;
   return (
     <ItemRoomWrapper
@@ -15,7 +22,7 @@ const RoomItem = memo((props: IProps) => {
       $itemWidth={itemWidth}
     >
       <div className="inner">
-        <div className="room-img">
+        <div className="room-img" onClick={() => itemClick(itemData)}>
           <img src={itemData.picture_url} alt="" />
         </div>
         <div className="desc">{itemData.verify_info.messages?.join("·")}</div>

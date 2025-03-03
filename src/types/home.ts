@@ -1,12 +1,12 @@
 export interface IRoomInfo {
-  _id:number
+  _id: number;
   id: number;
   name: string;
   price: number | string;
   price_format: string;
   reviews_count: number;
   picture_url?: string;
-  picture_urls:string[]
+  picture_urls: string[];
   image_url: string;
   city?: string;
   verify_info: {
@@ -81,4 +81,3 @@ export interface IHomeState {
   plusInfo: IBaseSectionInfoV1;
   longForInfo: IBaseSectionInfoV1;
 }
-

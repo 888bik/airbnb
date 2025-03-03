@@ -1,9 +1,10 @@
-import { memo } from "react";
+import { memo, useCallback } from "react";
 import { EntireRoomsWrapper } from "./style";
 import { shallowEqual, useSelector } from "react-redux";
-import { RootState } from "@/store/index";
+import { RootState, useAppDispatch } from "@/store/index";
 import RoomItem from "@/components/room-item";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { changeDetailInfo } from "@/store/modules/detail";
 
 const EntireRooms = memo(() => {
   const { roomListData, totalCount, isLoading } = useSelector(
@@ -14,10 +15,15 @@ const EntireRooms = memo(() => {
     }),
     shallowEqual
   );
-  // const navigate = useNavigate();
-  // function itemClickHandle() {
-  //   navigate("/detail");
-  // }
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const itemClick = useCallback(
+    (itemData) => {
+      dispatch(changeDetailInfo(itemData));
+      navigate("/detail");
+    },
+    [dispatch, navigate]
+  );
   return (
     <EntireRoomsWrapper>
       <div className="title">共{totalCount}多处住宿</div>
@@ -28,7 +34,7 @@ const EntireRooms = memo(() => {
               itemData={item}
               itemWidth="20%"
               key={item._id}
-              // itemClick={itemClickHandle}
+              handleItemClick={itemClick}
             />
           );
         })}

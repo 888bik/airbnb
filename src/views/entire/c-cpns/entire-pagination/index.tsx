@@ -1,7 +1,7 @@
 import { memo, useEffect } from "react";
 import Pagination from "@mui/material/Pagination";
 import { EntirePaginationWrapper } from "./style";
-import { useSelector } from "react-redux";
+import { shallowEqual, useSelector } from "react-redux";
 import {
   changeCurrentPage,
   fetchEntireDataAction,
@@ -17,7 +17,8 @@ const EntirePagination = memo(() => {
         totalCount: state.entire.totalCount,
         roomList: state.entire.RoomList,
       };
-    }
+    },
+    shallowEqual
   );
   const totalPage = Math.ceil(totalCount / 20);
   const startCount = (currentPage - 1) * 20 + 1;
@@ -30,7 +31,7 @@ const EntirePagination = memo(() => {
   }
   useEffect(() => {
     dispatch(fetchEntireDataAction());
-  }, [currentPage]);
+  }, [currentPage, dispatch]);
   return (
     <EntirePaginationWrapper>
       {!!roomList.length && (
