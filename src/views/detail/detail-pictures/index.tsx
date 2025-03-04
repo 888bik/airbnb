@@ -9,7 +9,6 @@ const DetailPicture = memo(() => {
       detailInfo: state.detail.DetailInfo,
     };
   }, shallowEqual);
-  console.log(detailInfo);
   return (
     <DetailPictureWrapper>
       <div className="pictures">
@@ -20,7 +19,7 @@ const DetailPicture = memo(() => {
           </div>
         </div>
         <div className="right">
-          {detailInfo.picture_urls.slice(1, 5).map((item) => {
+          {detailInfo.picture_urls?.slice(1, 5).map((item) => {
             return (
               <div className="item" key={item}>
                 <img src={item} alt="" />

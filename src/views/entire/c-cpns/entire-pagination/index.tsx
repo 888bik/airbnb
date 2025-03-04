@@ -23,7 +23,7 @@ const EntirePagination = memo(() => {
   const totalPage = Math.ceil(totalCount / 20);
   const startCount = (currentPage - 1) * 20 + 1;
   const endCount = currentPage * 20;
-  function handleChange(_, page) {
+  function handleChange(_, page: number) {
     //滚到顶部
     window.scrollTo(0, 0);
     //更改页码获取对应的数据
@@ -31,7 +31,7 @@ const EntirePagination = memo(() => {
   }
   useEffect(() => {
     dispatch(fetchEntireDataAction());
-  }, [currentPage, dispatch]);
+  }, [dispatch]);
   return (
     <EntirePaginationWrapper>
       {!!roomList.length && (

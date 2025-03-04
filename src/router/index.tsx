@@ -6,8 +6,7 @@ import { createBrowserRouter } from "react-router-dom";
 const Home = lazy(() => import("@/views/home"));
 const Detail = lazy(() => import("@/views/detail"));
 const Entire = lazy(() => import("@/views/entire"));
-// import type { RouteObject } from "react-router-dom";
-
+const Demo = lazy(() => import("@/views/demo"));
 const routers = createBrowserRouter([
   {
     path: "/",
@@ -29,6 +28,10 @@ const routers = createBrowserRouter([
       {
         path: "detail",
         element: <Detail />,
+      },
+      {
+        path: "demo",
+        element: <Demo />,
       },
     ],
   },

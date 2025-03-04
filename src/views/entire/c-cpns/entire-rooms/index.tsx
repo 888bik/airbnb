@@ -21,6 +21,7 @@ const EntireRooms = memo(() => {
     (itemData) => {
       dispatch(changeDetailInfo(itemData));
       navigate("/detail");
+      window.scrollTo(0, 0);
     },
     [dispatch, navigate]
   );
