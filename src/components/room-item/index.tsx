@@ -1,4 +1,4 @@
-import { memo, useRef } from "react";
+import { memo, useRef, useState } from "react";
 import { ItemRoomWrapper } from "./style";
 import { IRoomInfo } from "@/types/home";
 import Rating from "@mui/material/Rating";
@@ -6,6 +6,8 @@ import IconArrowLeft from "@/assets/svg/icon-arrow-left";
 import IconArrowRight from "@/assets/svg/icon-arrow-right";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
+import Indicator from "@/base-ui/indicator";
+import classNames from "classnames";
 
 interface IProps {
   itemData: IRoomInfo;
@@ -16,6 +18,7 @@ interface IProps {
 const RoomItem = memo((props: IProps) => {
   const { itemData, itemWidth = "25%", itemClick } = props;
   const sliderRef = useRef(null);
+  const [selectIndex, setSelectIndex] = useState(0);
   //事件处理
   function handleItemClick(itemData) {
     if (itemClick) {
@@ -23,12 +26,18 @@ const RoomItem = memo((props: IProps) => {
     }
   }
   function handleControlClick(event, isRight: boolean) {
+    isRight
+      ? sliderRef.current.swiper.slideNext()
+      : sliderRef.current.swiper.slidePrev();
+    //判断索引是否越界
+    let newIndex = isRight ? selectIndex + 1 : selectIndex - 1;
+    const length = itemData.picture_urls.length;
+    if (newIndex < 0) newIndex = length - 1;
+    if (newIndex > length - 1) newIndex = 0;
+
+    setSelectIndex(newIndex);
+    //阻止冒泡事件
     event.stopPropagation();
-    if (isRight) {
-      sliderRef.current.swiper.slideNext();
-    } else {
-      sliderRef.current.swiper.slidePrev();
-    }
   }
   return (
     <ItemRoomWrapper
@@ -52,7 +61,24 @@ const RoomItem = memo((props: IProps) => {
               <IconArrowRight width="30" height="30" />
             </div>
           </div>
-          <Swiper ref={sliderRef}>
+          {/* 指示器 */}
+          <div className="indicator">
+            {/* Indicator组件里面包含插槽,可以根据传入的内容进行展示 */}
+            <Indicator selectIndex={selectIndex}>
+              {itemData?.picture_urls?.map((item, index) => {
+                return (
+                  <div className="item" key={item}>
+                    <span
+                      className={classNames("dot", {
+                        active: index === selectIndex,
+                      })}
+                    ></span>
+                  </div>
+                );
+              })}
+            </Indicator>
+          </div>
+          <Swiper ref={sliderRef} loop={true}>
             {itemData.picture_urls.map((item) => {
               return (
                 <SwiperSlide key={item}>

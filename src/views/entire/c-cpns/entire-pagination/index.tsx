@@ -31,7 +31,7 @@ const EntirePagination = memo(() => {
   }
   useEffect(() => {
     dispatch(fetchEntireDataAction());
-  }, [dispatch]);
+  }, [currentPage, dispatch]);
   return (
     <EntirePaginationWrapper>
       {!!roomList.length && (
