@@ -48,6 +48,7 @@ export const RightWrapper = styled.div`
     .panel {
       position: absolute;
       top: 54px;
+      z-index: 9;
       right: 0;
       width: 240px;
       background-color: #fff;

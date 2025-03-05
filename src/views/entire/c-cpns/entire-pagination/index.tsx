@@ -11,13 +11,11 @@ import { RootState, useAppDispatch } from "@/store";
 const EntirePagination = memo(() => {
   const dispatch = useAppDispatch();
   const { currentPage, totalCount, roomList } = useSelector(
-    (state: RootState) => {
-      return {
-        currentPage: state.entire.currentPage,
-        totalCount: state.entire.totalCount,
-        roomList: state.entire.RoomList,
-      };
-    },
+    (state: RootState) => ({
+      currentPage: state.entire.currentPage,
+      totalCount: state.entire.totalCount,
+      roomList: state.entire.RoomList,
+    }),
     shallowEqual
   );
   const totalPage = Math.ceil(totalCount / 20);
@@ -31,12 +29,16 @@ const EntirePagination = memo(() => {
   }
   useEffect(() => {
     dispatch(fetchEntireDataAction());
-  }, [currentPage, dispatch]);
+  }, [currentPage]);
   return (
     <EntirePaginationWrapper>
       {!!roomList.length && (
         <div className="info">
-          <Pagination count={totalPage} onChange={handleChange} />
+          <Pagination
+            count={totalPage}
+            onChange={handleChange}
+            page={currentPage}
+          />
           <div className="desc">
             第 {startCount} - {endCount} 个房源, 共超过 {totalCount} 个
           </div>

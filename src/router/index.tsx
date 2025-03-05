@@ -6,7 +6,6 @@ import { createBrowserRouter } from "react-router-dom";
 const Home = lazy(() => import("@/views/home"));
 const Detail = lazy(() => import("@/views/detail"));
 const Entire = lazy(() => import("@/views/entire"));
-const Demo = lazy(() => import("@/views/demo"));
 const routers = createBrowserRouter([
   {
     path: "/",
@@ -18,20 +17,16 @@ const routers = createBrowserRouter([
         element: <Home />,
       },
       {
-        path: "home",
+        path: "/home",
         element: <Home />,
       },
       {
-        path: "entire",
+        path: "/entire",
         element: <Entire />,
       },
       {
-        path: "detail",
+        path: "/detail",
         element: <Detail />,
-      },
-      {
-        path: "demo",
-        element: <Demo />,
       },
     ],
   },

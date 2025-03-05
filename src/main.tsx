@@ -16,7 +16,7 @@ createRoot(document.getElementById("root")!).render(
   // <StrictMode>
   <ThemeProvider theme={theme}>
     <Provider store={store}>
-      <Suspense fallback="Loading....">
+      <Suspense fallback={<h1>Loading......</h1>}>
         <RouterProvider router={routers} />
       </Suspense>
     </Provider>
