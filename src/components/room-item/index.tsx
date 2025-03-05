@@ -39,66 +39,60 @@ const RoomItem = memo((props: IProps) => {
     //阻止冒泡事件
     event.stopPropagation();
   }
+
+  const pictureEl = (
+    <div className="room-img">
+      <img src={itemData.picture_url} alt="" />
+    </div>
+  );
+  const sliderEl = (
+    <div className="slider">
+      <div className="control">
+        <div className="btn left" onClick={(e) => handleControlClick(e, false)}>
+          <IconArrowLeft width="30" height="30" />
+        </div>
+        <div className="btn right" onClick={(e) => handleControlClick(e, true)}>
+          <IconArrowRight width="30" height="30" />
+        </div>
+      </div>
+      {/* 指示器 */}
+      <div className="indicator">
+        {/* Indicator组件里面包含插槽,可以根据传入的内容进行展示 */}
+        <Indicator selectIndex={selectIndex}>
+          {itemData?.picture_urls?.map((item, index) => {
+            return (
+              <div className="item" key={item}>
+                <span
+                  className={classNames("dot", {
+                    active: index === selectIndex,
+                  })}
+                ></span>
+              </div>
+            );
+          })}
+        </Indicator>
+      </div>
+      <Swiper ref={sliderRef} loop={true}>
+        {itemData?.picture_urls?.map((item) => {
+          return (
+            <SwiperSlide key={item}>
+              <div className="room-img">
+                <img src={item} alt="" />
+              </div>
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
+    </div>
+  );
   return (
     <ItemRoomWrapper
       $verifyColor={itemData?.verify_info?.text_color || "#39576a"}
       $itemWidth={itemWidth}
     >
       <div className="inner" onClick={() => handleItemClick(itemData)}>
-        {/* 轮播图 */}
-        <div className="slider">
-          <div className="control">
-            <div
-              className="btn left"
-              onClick={(e) => handleControlClick(e, false)}
-            >
-              <IconArrowLeft width="30" height="30" />
-            </div>
-            <div
-              className="btn right"
-              onClick={(e) => handleControlClick(e, true)}
-            >
-              <IconArrowRight width="30" height="30" />
-            </div>
-          </div>
-          {/* 指示器 */}
-          <div className="indicator">
-            {/* Indicator组件里面包含插槽,可以根据传入的内容进行展示 */}
-            <Indicator selectIndex={selectIndex}>
-              {itemData?.picture_urls?.map((item, index) => {
-                return (
-                  <div className="item" key={item}>
-                    <span
-                      className={classNames("dot", {
-                        active: index === selectIndex,
-                      })}
-                    ></span>
-                  </div>
-                );
-              })}
-            </Indicator>
-          </div>
-          <Swiper ref={sliderRef} loop={true}>
-            {itemData.picture_urls.map((item) => {
-              return (
-                <SwiperSlide key={item}>
-                  <div className="room-img">
-                    <img src={item} alt="" />
-                  </div>
-                </SwiperSlide>
-              );
-            })}
-          </Swiper>
+        {!itemData.picture_urls ? pictureEl : sliderEl}
 
-          {/* <div className="room-img">
-            <img
-              src={itemData.picture_url}
-              alt=""
-              // onClick={() => handleItemClick(itemData)}
-            />
-          </div> */}
-        </div>
-        {/* 单张图片展示 */}
         <div className="desc">{itemData.verify_info.messages?.join("·")}</div>
         <div className="name">{itemData.name}</div>
         <div className="price">{itemData.price_format}/晚</div>
