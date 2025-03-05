@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const EntireRoomsWrapper = styled.div`
   position: relative;
   padding: 30px 20px;
-  
+
   .title {
     font-size: 22px;
     font-weight: 700;
@@ -18,6 +18,7 @@ export const EntireRoomsWrapper = styled.div`
 
   > .cover {
     position: absolute;
+    z-index: 9;
     left: 0;
     right: 0;
     top: 0;

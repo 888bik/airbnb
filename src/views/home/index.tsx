@@ -7,13 +7,6 @@ import { shallowEqual, useSelector } from "react-redux";
 import HomeSectionV1 from "./c-cpns/home-section-v1";
 import { isEmptyO } from "@/utils/isEmpty";
 import HomeLongFor from "./c-cpns/home-longfor";
-// import {
-//   IHighScoreInfo,
-//   IGoodPriceInfo,
-//   IDisCountInfo,
-//   IRecommendInfo,
-//   IPlusInfo,
-// } from "@/types/home";
 import HomeSectionV2 from "./c-cpns/home-section-v2";
 import HomeSectionV3 from "./c-cpns/home-section-v3";
 

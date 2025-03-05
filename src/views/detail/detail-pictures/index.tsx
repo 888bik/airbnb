@@ -1,9 +1,11 @@
-import { memo } from "react";
+import { memo, useState } from "react";
 import { DetailPictureWrapper } from "./style";
 import { shallowEqual, useSelector } from "react-redux";
 import { RootState } from "@/store";
+import PictureBrowser from "@/base-ui/picture-browser";
 
 const DetailPicture = memo(() => {
+  const [showBrowser, setShowBrowser] = useState(false);
   const { detailInfo } = useSelector((state: RootState) => {
     return {
       detailInfo: state.detail.DetailInfo,
@@ -29,6 +31,15 @@ const DetailPicture = memo(() => {
           })}
         </div>
       </div>
+      <div className="show-btn" onClick={() => setShowBrowser(true)}>
+        显示照片
+      </div>
+      {showBrowser && (
+        <PictureBrowser
+          pictureUrls={detailInfo.picture_urls}
+          closeClick={() => setShowBrowser(false)}
+        />
+      )}
     </DetailPictureWrapper>
   );
 });
