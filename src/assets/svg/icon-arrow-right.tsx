@@ -2,8 +2,8 @@ import { memo } from "react";
 import { styleStrToObject } from "./utils";
 
 interface IProps {
-  width: string;
-  height: string;
+  width?: string;
+  height?: string;
 }
 const IconArrowRight = memo((props: IProps) => {
   const { height = 12, width = 12 } = props;
